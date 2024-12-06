@@ -46,44 +46,6 @@
         </div>
     </div>
 
-    <!-- time over model  -->
-    <div class="modal fade" id="timeOverModal" tabindex="-1" aria-labelledby="timeOverModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="timeOverModalLabel">⏰ Time's Up!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Sorry, your time is up! Better luck next time.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary restartButton" id="restartButton">Restart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- win the game model -->
-    <div class="modal fade" id="winGameModal" tabindex="-1" aria-labelledby="winGameModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="winGameModalLabel">🎉 Congratulations!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    You found all the treasures! You won the game!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary restartButton" id="restartButton">Restart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/script.js') }}"></script>

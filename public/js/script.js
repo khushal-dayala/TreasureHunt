@@ -91,9 +91,7 @@ function startTimer(duration) {
         timerDisplay.text(`Time Left: ${timer}s`);
 
         if (timer <= 0) {
-            clearInterval(timerInterval);
-            $('#timeOverModal').modal('show');
-            $('.cell').off('click');
+            saveGameState(treasureCount, missCount);
         }
     }, 1000);
 }
@@ -102,8 +100,7 @@ function updateCounters() {
     $('#treasure-count').text(`💎: ${treasureCount}`);
     $('#miss-count').text(`👎: ${missCount}`);
     if (gridCound == treasureCount) {
-        $('#winGameModal').modal('show');
-        $('.cell').off('click');
+        saveGameState(treasureCount, missCount);
     }
 }
 
@@ -111,6 +108,30 @@ function showError(selector, message) {
     const inputElement = $(selector);
     inputElement.addClass('is-invalid');
     inputElement.after(`<div class="text-danger error-message">${message}</div>`);
+}
+
+function saveGameState(treasuresFound, misses) {
+    $.ajax({
+        url: '/save-game',
+        method: 'POST',
+        data: {
+            treasures_found: treasuresFound,
+            misses: misses,
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        success: function(response) {
+            if (response && response.status === 200 && response.random_number) {
+                window.location = '/treasure-hunt/' + response.random_number;
+            } else {
+                console.error('Unexpected response format:', response);
+            }
+        },
+        error: function(xhr) {
+            console.error('Error saving game:', xhr.responseText);
+        },
+    });
 }
 
 $('input').on('focus', function () {
